@@ -9,7 +9,6 @@ const formatDate = () => {
     const monday = new Date(curr.setDate(first));
     const monthFormatted = monday.getMonth() + 1 < 10 ? '0' + (monday.getMonth() + 1): monday.getMonth() + 1;
     const dayFormatted = monday.getDate() < 10 ? '0' + monday.getDate(): monday.getDate();
-
     const formattedDate = monthFormatted + '_' + dayFormatted + '_' + monday.getFullYear();
 
     return formattedDate;
@@ -38,10 +37,13 @@ const getFilesToDelete = () => {
 
         isFileFound = false;
     });
-    console.log(`There are ${filesToDelete.length} files to delete. Cleaning folder now.`);
+
+    if (filesToDelete.length > 0) {
+        console.log(`There are ${filesToDelete.length} files to delete. Cleaning folder now.`);
+    };
+    
     return filesToDelete;
 }
-getFilesToDelete();
 
 export function deleteFolders() {
     const date = formatDate();
@@ -49,7 +51,6 @@ export function deleteFolders() {
 
     if(fileNames.length === 0){
         console.log('No files to delete.');
-        console.log('Script has finished running.');
         return;
     }
 
@@ -57,5 +58,4 @@ export function deleteFolders() {
         fs.remove(drivePathName + date + '/' + file);
     }
     console.log(`Removed: ${fileNames}`);
-    console.log(`Script has finished.`);
 };
