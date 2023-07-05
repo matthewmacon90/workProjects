@@ -38,9 +38,10 @@ const getFilesToDelete = () => {
 
         isFileFound = false;
     });
-
+    console.log(`There are ${filesToDelete.length} files to delete. Cleaning folder now.`);
     return filesToDelete;
 }
+getFilesToDelete();
 
 export function deleteFolders() {
     const date = formatDate();
