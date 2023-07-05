@@ -21,7 +21,6 @@ const getFilesToDelete = () => {
     const filesToDelete = [];
     const uniqueID = removeDuplicates();
 
-    // let files = fs.readdirSync('C:/Users/matthew.macon/Documents/niche/workProjects/testFolder/' + formattedDate);
     let files = fs.readdirSync(drivePathName + date);
 
     files.forEach(file => {
@@ -54,7 +53,6 @@ export function deleteFolders() {
     }
 
     for(let file of fileNames) {
-        // fs.remove('C:/Users/matthew.macon/Documents/niche/workProjects/testFolder/' + formattedDate + '/' + file);
         fs.remove(drivePathName + date + '/' + file);
     }
     console.log(`Removed: ${fileNames}`);
